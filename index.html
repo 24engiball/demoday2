@@ -1,19 +1,45 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Hello World!</title>
-  </head>
-  <body>
-    <h1>Hello World!</h1>
-    <!-- All of the Node.js APIs are available in this renderer process. -->
-    We are using Node.js <script>document.write(process.versions.node)</script>,
-    Chromium <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
-  </body>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Hello World!</title>
+</head>
+
+<body>
+  <h1>Hello World!</h1>
+  <!-- All of the Node.js APIs are available in this renderer process. -->
+  We are using Node.js
+  <script>
+    document.write(process.versions.node)
+  </script>, Chromium
+  <script>
+    document.write(process.versions.chrome)
+  </script>, and Electron
+  <script>
+    document.write(process.versions.electron)
+  </script>.
+  <div class="content-wrapper">
+
+    <a id="demo" onclick="myFunction()"><button  class="btn btn-large btn-default moreInfo-Link-button">More Info</button></a>
+
+  </div>
+
 
   <script>
+    function myFunction() {
+      const remote = require('electron').remote;
+      const BrowserWindow = remote.BrowserWindow;
+
+      var win = new BrowserWindow({ width: 200, height: 200 });
+      win.loadURL('www.google.com');
+    }
+  </script>
+</body>
+
+<script>
     // You can also require other files to run in this process
     require('./renderer.js')
-  </script>
+</script>
+
 </html>

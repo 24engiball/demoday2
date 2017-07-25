@@ -33,12 +33,12 @@ function createWindow () {
     // when you should delete the corresponding element.
     mainWindow = null
   })
-  createPopupWindow () 
+  //createPopupWindow () 
 }
 
 function createPopupWindow () {
   // Create the browser window.
-  popupWindow = new BrowserWindow({width: 200, height: 200})
+  popupWindow = new BrowserWindow({width: 200, height: 200,resizable: false})
 
   // and load the index.html of the app.
   popupWindow.loadURL(url.format({
@@ -46,6 +46,10 @@ function createPopupWindow () {
     protocol: 'file:',
     slashes: true
   }))
+  
+  function callPopup(){
+  createPopupWindow () 
+  }
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
