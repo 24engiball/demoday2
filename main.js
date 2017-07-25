@@ -1,6 +1,7 @@
 const electron = require('electron')
 // Module to control application life.
 const app = electron.app
+const dialog  = electron.dialog
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow
 
@@ -34,8 +35,28 @@ function createWindow () {
     mainWindow = null
   })
   //createPopupWindow () 
+  callAlert()
 }
 
+ function callAlert() {
+
+        dialog.showMessageBox({
+            type: 'question',
+            buttons: ['Yes', 'No'],
+            title: 'Confirm',
+            message: 'Unsaved data will be lost. Are you sure you want to quit?'
+        }, function (response) {
+            if (response === 0) { // Runs the following if 'Yes' is clicked
+                app.showExitPrompt = false
+                mainWindow.close()
+            }
+        })
+    
+};
+
+ function callPopup(){
+  createPopupWindow () 
+  }
 function createPopupWindow () {
   // Create the browser window.
   popupWindow = new BrowserWindow({width: 200, height: 200,resizable: false})
@@ -47,9 +68,9 @@ function createPopupWindow () {
     slashes: true
   }))
   
-  function callPopup(){
-  createPopupWindow () 
-  }
+ 
+
+
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
