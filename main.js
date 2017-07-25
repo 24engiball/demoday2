@@ -10,7 +10,7 @@ const url = require('url')
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
-let popupWindow
+let popupWindow // ประกาศหน้าต่างตัวที่ /
 
 function createWindow () {
   // Create the browser window.
@@ -42,7 +42,7 @@ function createPopupWindow () {
 
   // and load the index.html of the app.
   popupWindow.loadURL(url.format({
-    pathname: path.join(__dirname, 'index.html'),
+    pathname: path.join(__dirname, 'popup.html'),
     protocol: 'file:',
     slashes: true
   }))
